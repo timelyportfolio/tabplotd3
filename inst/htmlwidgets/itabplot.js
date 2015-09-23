@@ -14,7 +14,7 @@ HTMLWidgets.widget({
 
   renderValue: function(el, x, instance) {
 
-    el.innerText = 'test dependencies';
+    draw( x, el );
 
   },
 

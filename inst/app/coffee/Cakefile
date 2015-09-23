@@ -5,14 +5,14 @@ option '-m', '--minify [true]', 'should file be minified after building?'
 
 appFiles  = [
   # omit src/ and .coffee to make the below lines a little shorter
-  'tableplot', 'utils'
+  'utils.coffee', 'catcolumn.coffee', 'numcolumn.coffee', 'axis.coffee', 'tableplot.coffee'
 ]
 
 task 'build', 'Build single application file from source files', (options) ->
   filename = "#{options.file or '../js/app'}.js"
   minify = options.minify
   
-  exec "coffee -j #{filename} --compile #{appFiles.join ' '} ", (err, stdout, stderr) ->
+  exec "cat #{appFiles.join ' '} | coffee --compile --stdio > #{filename}", (err, stdout, stderr) ->
     throw err if err
     console.log stdout + stderr
     console.log 'Finished building.'

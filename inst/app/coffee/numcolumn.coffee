@@ -54,3 +54,4 @@ numColumn = (plots, rb, bb, binScale, colScale) ->
 		g.append("use").attr("id", "top")
 		return
 	)
+

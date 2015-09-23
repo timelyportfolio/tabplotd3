@@ -14,15 +14,15 @@ yScale = null
 yAxis = null
 yZoom = null
 
-@draw = (data) ->
-	width = $("#plot").width()
+@draw = (data,el) ->
+	width = $(el).width()
 	console.log $(document).height(), $(window).height()
 	#width = 1024
 	height = $(document).height() - 150
 	margin = top: 0, bottom: 0,	left: 60, right: 20
 
-	vars = d3.keys data.vars
-	values = d3.values data.vars
+	vars = d3.keys data.columns
+	values = d3.values data.columns
 
 	clmScale = d3.scale.ordinal()
 		.domain(vars)
@@ -34,7 +34,7 @@ yZoom = null
 	   .range([10,height-20])
 
 	yScale = d3.scale.linear()
-		.domain([settings.from/100, settings.to/100])
+		.domain([data.from/100, data.to/100])
 		.range([10,height-20])
 		.clamp(true)
 
@@ -44,8 +44,8 @@ yZoom = null
 	colScale = d3.scale.linear()
 	   .range(["white", "steelblue"])
 
-    d3.select("table.tableplot").remove()
-	vis = d3.select("#plot").append("table").classed("tableplot", true)
+    d3.select(el).select("table.tableplot").remove()
+	vis = d3.select(el).append("table").classed("tableplot", true)
 	header = vis.append("tr").classed("header", true)
 	column = vis.append("tr").classed("column", true)
 
@@ -61,8 +61,8 @@ yZoom = null
 		.text((d) -> d)
 		.each((d) ->
 			option = {icons:{secondary: "ui-icon-triangle-2-n-s"}}
-			if d is settings.sortCol
-				option.icons.secondary = if settings.decreasing then "ui-icon-triangle-1-s" else "ui-icon-triangle-1-n" 
+			if d is data.sortCol
+				option.icons.secondary = if data.decreasing then "ui-icon-triangle-1-s" else "ui-icon-triangle-1-n" 
 			$(this).button(option)
 		)
 	headers.exit().remove()

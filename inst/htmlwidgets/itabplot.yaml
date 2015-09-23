@@ -21,3 +21,4 @@ dependencies:
     version: 0.0.1
     src: htmlwidgets/lib/tabplotd3
     script: tabplotd3.js
+    stylesheet: tabplotd3.css
