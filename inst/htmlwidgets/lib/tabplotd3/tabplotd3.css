@@ -1,0 +1,45 @@
+.itabplot svg {
+  shape-rendering: crispEdges;
+  overflow: visible;
+}
+
+.itabplot .vars {
+  position: relative;
+  height: 10px;
+}
+
+.itabplot .label {
+  float: left;
+}
+
+.itabplot rect.panel {
+   fill: #F1F1F1;
+}
+
+.itabplot .y.axis line, .itabplot .y.axis path {
+  fill: none;
+  stroke: #000;
+}
+
+.itabplot .x.axis line, .itabplot .x.axis path {
+  fill: none;
+  stroke: #000;
+}
+
+.itabplot .highlight {
+  font-weight: bold;
+  fill: red;
+}
+
+.itabplot .plot {
+   display: inline;
+}
+
+.itabplot .plot input {
+   width: 5ex;
+}
+
+.itabplot input {
+   text-align: right;
+   width: 5ex;
+}
